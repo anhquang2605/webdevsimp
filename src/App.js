@@ -1,18 +1,22 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import RecipeList from './RecipeList';
 import '../css/app.css';
 
 export const RecipeContext = React.createContext();
+const LOCAL_STORAGE_KEY = "cookingWithReact_recipes";
 
 function App() {
   const [recipes, setRecipes] = useState(sampleRecipes);
-  
+
+
+
   const RecipeContextValue = {
     handleRecipeAdd,
     handleRecipeDelete
   }
 
   function handleRecipeAdd(){
+    console.log("here")
     const newRecipe = {
       id: Math.random() * 9999,
       name: 'New',
@@ -41,7 +45,7 @@ function App() {
 const sampleRecipes = [
   {
     id:1,
-    name: "Plain chicken",
+    name: "nothing",
     servings: 3,
     cookTime: '1:45',
     instructions: "1. Put salt on chicken\n2. Put chicken in oven\n3. Eat the chicken",
@@ -60,14 +64,14 @@ const sampleRecipes = [
   },
   {
     id:2,
-    name: "Plain pork",
+    name: "Plain sork",
     servings: 5,
     cookTime: '0:45',
     instructions: "1. Put salt on pork\n2. Put pork in oven\n3. Eat the pork",
     ingredients:[
       {
         id: 1,
-        name: 'Pork',
+        name: 'Dork',
         amount: '3 Pounds'
       },
       {
